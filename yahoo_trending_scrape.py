@@ -21,7 +21,10 @@ def main():
     # -- Clean up the data points --
     # Keep in mind a comma will be the delimiter.
     for i in range(len(title)):
-        title[i] = title[i].lstrip() + ', '
+        if i == len(title) - 1:
+          title[i] = title[i].lstrip()
+        else:
+          title[i] = title[i].lstrip() + ', '
     string = ''.join(title)
 
     # -- Define relevant data points --
