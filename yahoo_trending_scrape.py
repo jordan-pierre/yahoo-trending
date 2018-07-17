@@ -19,23 +19,28 @@ def main():
     title = tree.xpath('//span[@class="C($searchBlue):h Fw(b) Mstart(2px)"]/text()')
 
     # -- Clean up the data points --
-    # Keep in mind a comma will be the delimiter.
+    # Keep in mind a comma will be the value delimiter.
     for i in range(len(title)):
         if i == len(title) - 1:
           title[i] = title[i].lstrip()
         else:
           title[i] = title[i].lstrip() + ', '
-    string = ''.join(title)
+    string = ''.join(title) + '\n'
 
     # -- Define relevant data points --
     year = datetime.datetime.now().date().year
     month = datetime.datetime.now().date().month
     day = datetime.datetime.now().date().day
-    hour = datetime.datetime.now().time().hour
+    dow = datetime.datetime.today().weekday()     # Day of the week as an int, Monday = 0, Sunday = 6.
+    hour = datetime.datetime.now().time().hour - 4  # UTC-4: EST
     min = datetime.datetime.now().time().minute
-
+    
+    # -- Convert Weekday from INT to String --
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    dow = days[dow]
+    
     # -- Combine variables using a list --
-    trending = [str(year)+', ', str(month)+', ', str(day)+', ', str(hour)+', ', str(min)+', ', string]
+    trending = [str(year)+', ', str(month)+', ', str(day)+', ', dow+', ', str(hour)+', ', str(min)+', ', string]
     clean = ''.join(trending)
 
     # -- Export results to a CSV --
