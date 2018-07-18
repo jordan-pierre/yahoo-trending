@@ -7,6 +7,8 @@
 from lxml import html
 import requests
 import datetime
+from pytz import timezone
+
 
 def main():
     # -- Provide the website to scrape --
@@ -28,12 +30,13 @@ def main():
     string = ''.join(title) + '\n'
 
     # -- Define relevant data points --
-    year = datetime.datetime.now().date().year
-    month = datetime.datetime.now().date().month
-    day = datetime.datetime.now().date().day
-    dow = datetime.datetime.today().weekday()     # Day of the week as an int, Monday = 0, Sunday = 6.
-    hour = datetime.datetime.now().time().hour - 4  # UTC-4: EST
-    min = datetime.datetime.now().time().minute
+    tz = timezone('EST')
+    year = datetime.datetime.now(tz).date().year
+    month = datetime.datetime.now(tz).date().month
+    day = datetime.datetime.now(tz).date().day
+    dow = datetime.datetime.now(tz).today().weekday()     # Day of the week as an int, Monday = 0, Sunday = 6.
+    hour = datetime.datetime.now(tz).time().hour
+    min = datetime.datetime.now(tz).time().minute
     
     # -- Convert Weekday from INT to String --
     days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
