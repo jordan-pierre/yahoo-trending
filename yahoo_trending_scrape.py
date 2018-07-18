@@ -43,12 +43,11 @@ def main():
     dow = days[dow]
     
     # -- Combine variables using a list --
-    trending = [str(year)+', ', str(month)+', ', str(day)+', ', dow+', ', str(hour)+', ', str(min)+', ', string]
-    clean = ''.join(trending)
-
+    trending = ', '.join([str(year), str(month), str(day), dow, str(hour), str(min), string])                 
+    
     # -- Export results to a CSV --
     fd = open('historical_trending.csv','a')
-    fd.write(clean)
+    fd.write(trending)
     fd.close()
 
 
