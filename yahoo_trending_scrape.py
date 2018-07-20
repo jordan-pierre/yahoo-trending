@@ -36,11 +36,18 @@ def main():
     day = datetime.datetime.now(tz).date().day
     dow = datetime.datetime.now(tz).today().weekday()     # Day of the week as an int, Monday = 0, Sunday = 6.
     hour = datetime.datetime.now(tz).time().hour
+    hUTC = datetime.datetime.now().time().hour            # Hour in tz = UTC
     min = datetime.datetime.now(tz).time().minute
     
     # -- Convert Weekday from INT to String --
+    # dow seems to be based on UTC even though I've changed the  
     days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-    dow = days[dow]
+    if hour >= 24 - (hUTC - hour):
+      dow = days[dow - 1]
+      if dow == -1:
+        dow = 6
+    else:
+      dow = days[dow]
     
     # -- Combine variables using a list --
     trending = ', '.join([str(year), str(month), str(day), dow, str(hour), str(min), string])                 
