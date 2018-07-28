@@ -38,6 +38,7 @@ def main():
     hour = datetime.datetime.now(tz).time().hour
     hUTC = datetime.datetime.now().time().hour            # Hour in tz = UTC
     min = datetime.datetime.now(tz).time().minute
+    pk = min+hour+day+month+year                          # Primary key
     
     # -- Convert Weekday from INT to String --
     # dow seems to be based on UTC even though I've changed the  
@@ -48,7 +49,7 @@ def main():
        dow = days[dow]
     
     # -- Combine variables using a list --
-    trending = ', '.join([str(year), str(month), str(day), dow, str(hour), str(min), string])                 
+    trending = ', '.join([str(pk), str(year), str(month), str(day), dow, str(hour), str(min), string])                 
     
     # -- Export results to a CSV --
     fd = open('historical_trending.csv','a')
