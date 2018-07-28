@@ -42,12 +42,10 @@ def main():
     # -- Convert Weekday from INT to String --
     # dow seems to be based on UTC even though I've changed the  
     days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-    if hour >= 24 - (hUTC - hour):
-      dow = days[dow - 1]
-      if dow == -1:
-        dow = 6
+    if hour in range(19, 23)
+       dow = days[dow - 1]
     else:
-      dow = days[dow]
+       dow = days[dow]
     
     # -- Combine variables using a list --
     trending = ', '.join([str(year), str(month), str(day), dow, str(hour), str(min), string])                 
