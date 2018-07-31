@@ -42,7 +42,7 @@ def main():
     # -- Convert Weekday from INT to String --
     # dow seems to be based on UTC even though I've changed the  
     days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-    if hour in range(19, 24)
+    if hour in range(19, 24):
        dow = days[dow - 1]
     else:
        dow = days[dow]
