@@ -36,7 +36,6 @@ def main():
     day = datetime.datetime.now(tz).date().day
     dow = datetime.datetime.now(tz).today().weekday()     # Day of the week as an int, Monday = 0, Sunday = 6.
     hour = datetime.datetime.now(tz).time().hour
-    hUTC = datetime.datetime.now().time().hour            # Hour in tz = UTC
     min = datetime.datetime.now(tz).time().minute
     pk = min+hour+day+month+year                          # Primary key
     
